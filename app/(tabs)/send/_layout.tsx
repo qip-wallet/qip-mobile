@@ -11,6 +11,11 @@ export default function SettingsLayout() {
             headerTitleAlign: "center",
         }} />
         <Stack.Screen name="2" />
-        <Stack.Screen name="3" />
+        <Stack.Screen name="3"
+            options={{
+                title: "Edit",
+                headerTitleAlign: "left",
+            }}
+        />
     </Stack>;
 }
