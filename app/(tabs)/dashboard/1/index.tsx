@@ -82,7 +82,11 @@ const WalletPage = () => {
                     <Text style={[CoreStyles.text({ fontFamily: 'Manrope_500Medium', fontSize: dynamicFontSize(14) }), { textAlign: "center" }]}>Receive</Text>
                 </Pressable>
                 <Pressable style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                    <LinearGradientComponent style={{ borderRadius: 100, padding: 5 }}>
+                    <LinearGradientComponent
+                        onPress={() => {
+                            router.push("/inscribe/1")
+                        }}
+                        style={{ borderRadius: 100, padding: 5 }}>
                         <MaterialCommunityIcons name='email-receive' style={{ padding: 10 }} size={24} />
                     </LinearGradientComponent>
                     <Text style={[CoreStyles.text({ fontFamily: 'Manrope_500Medium', fontSize: dynamicFontSize(14) }), { textAlign: "center" }]}>Inscribe</Text>

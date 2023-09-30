@@ -21,6 +21,9 @@ export default function AppLayout() {
                 presentation: "modal",
                 headerShown: true,
             }} />
+            <Stack.Screen name="inscribe" options={{
+                headerShown: false,
+            }} />
             {/* <Stack.Screen name="settings" options={{
                 presentation: "modal",
                 headerShown: false,

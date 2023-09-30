@@ -13,35 +13,35 @@ type ItemData = {
 
 const data: ItemData[] = [{
     id: '1',
-    action: 'Sent',
-    status: 'Confirmed',
+    action: '$WAVY',
+    status: '0.00045 BTC',
     amount: 100,
 }, {
     id: '2',
     action: 'Received',
-    status: 'Confirmed',
+    status: '0.00045 BTC',
     amount: 100,
 },
 {
     id: '3',
-    action: 'Sent',
-    status: 'Confirmed',
+    action: '$WAVY',
+    status: '0.00045 BTC',
     amount: 100,
 }, {
     id: '4',
     action: 'Received',
-    status: 'Confirmed',
+    status: '0.00045 BTC',
     amount: 100,
 },
 {
     id: '5',
-    action: 'Sent',
-    status: 'Confirmed',
+    action: '$WAVY',
+    status: '0.00045 BTC',
     amount: 100,
 }, {
     id: '6',
     action: 'Received',
-    status: 'Confirmed',
+    status: '0.00045 BTC',
     amount: 100,
 }
 ];
@@ -50,7 +50,6 @@ const Item = React.memo(({ data }: { data: ItemData }) => (
     <View style={{
         backgroundColor: "transparent",
         flexDirection: "row", height: "auto", margin: 10, justifyContent: "space-between",
-        paddingBottom: 50
     }}>
         <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
             <View style={{
@@ -124,6 +123,7 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(243, 249, 255, 0.9)",
         borderRadius: 10,
         padding: 10,
+        paddingBottom: 80
     },
 });
 
