@@ -25,7 +25,7 @@ export default function TabsLayout() {
         },
         {
             name: "advance",
-            iconName: "web",
+            iconName: "more-horiz",
         }
     ], []);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const InternetPage = () => {
+const SecurityPage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>This Page is Coming Soon</Text>
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InternetPage;
+export default SecurityPage;

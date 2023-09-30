@@ -6,5 +6,8 @@ export default function SettingsLayout() {
         title: "",
     }} >
         <Stack.Screen name="advanced" />
+        <Stack.Screen name="security" />
+        <Stack.Screen name="address" />
+        <Stack.Screen name="network" />
     </Stack>;
 }

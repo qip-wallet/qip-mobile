@@ -26,9 +26,9 @@ const SettingsPage = () => {
             path: "/settings/network"
         },
         {
-            title: "Update Password",
-            subtitle: "Update your lockscreen password",
-            path: "/settings/password"
+            title: "Wallet Security",
+            subtitle: "Update your wallet security settings",
+            path: "/settings/security"
         }
     ]
     return (
