@@ -13,9 +13,13 @@ export default function AppLayout() {
                 presentation: "modal",
                 headerShown: false,
             }} />
-               <Stack.Screen name="send" options={{
+            <Stack.Screen name="send" options={{
                 // presentation: "modal",
                 headerShown: false,
+            }} />
+            <Stack.Screen name="receive" options={{
+                presentation: "modal",
+                headerShown: true,
             }} />
             {/* <Stack.Screen name="settings" options={{
                 presentation: "modal",

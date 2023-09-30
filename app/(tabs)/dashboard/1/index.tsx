@@ -1,4 +1,4 @@
-import { Text, TextInput, Platform, View, StyleSheet, Pressable, DimensionValue, StyleProp, ViewStyle, Dimensions, FlatList, VirtualizedList, TouchableOpacity } from 'react-native';
+import { Text, TextInput, Platform, View, StyleSheet, Pressable, Clipboard, DimensionValue, StyleProp, ViewStyle, Dimensions, FlatList, VirtualizedList, TouchableOpacity, Vibration } from 'react-native';
 import React, { useState, useEffect } from 'react'
 import { Link, Stack, useRouter, useLocalSearchParams, router } from 'expo-router'
 import CoreStyles from '../../../src/core/index';
@@ -33,7 +33,10 @@ const WalletPage = () => {
         <View style={{ padding: 20, flex: 1, justifyContent: "flex-start", alignItems: "center", width: "100%", backgroundColor: "white", display: user && activeWallet && activeAccount ? "flex" : "none" }
         }>
             <View style={{ backgroundColor: "#ebecfe", paddingHorizontal: 10, borderRadius: 0, paddingVertical: 5 }}>
-                <TouchableOpacity onPress={() => { }} style={{
+                <TouchableOpacity onPress={() => {
+                    Vibration.vibrate(10)
+                    Clipboard.setString(activeAccountAddress.address)
+                }} style={{
                     flexDirection: "row", alignItems: "center",
                     gap: 5, maxWidth: width * 0.5, padding: 8, width: "auto",
                     justifyContent: "center",
@@ -71,7 +74,9 @@ const WalletPage = () => {
                     <Text style={[CoreStyles.text({ fontFamily: 'Manrope_500Medium', fontSize: dynamicFontSize(14) }), { textAlign: "center" }]}>Send</Text>
                 </Pressable>
                 <Pressable style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                    <LinearGradientComponent style={{ borderRadius: 100, padding: 5 }}>
+                    <LinearGradientComponent onPress={() => {
+                        router.push("/receive")
+                    }} style={{ borderRadius: 100, padding: 5 }}>
                         <MaterialCommunityIcons name='email-receive' style={{ padding: 10 }} size={24} />
                     </LinearGradientComponent>
                     <Text style={[CoreStyles.text({ fontFamily: 'Manrope_500Medium', fontSize: dynamicFontSize(14) }), { textAlign: "center" }]}>Receive</Text>
