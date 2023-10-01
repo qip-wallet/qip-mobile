@@ -25,12 +25,14 @@ export default function App() {
   useEffect(() => {
     fetchUserData();
   }, []);
-  const hasToken = false; // Replace with your token check logic
+  // check if lastAuthenticated is later than 24 hours ago
+  const lastAuthenticated = user?.lastAuthenticated
+    ? new Date(user.lastAuthenticated) > new Date(Date.now() - 86400000)
+    : false;
 
   const renderRedirect = () => {
-    console.log(hasToken)
     if (user) {
-      if(!hasToken){
+      if (!lastAuthenticated) {
         return <Redirect href="/auth/login" />
       }
       switch (user.step) {
@@ -41,7 +43,7 @@ export default function App() {
         case 2:
           return <Redirect href="/auth/address" />;
         case 3:
-          if (!hasToken) {
+          if (!lastAuthenticated) {
             return <Redirect href={appRoutes.tabs.home} />
           } else {
             return <Login />;
@@ -51,7 +53,7 @@ export default function App() {
       }
     } else {
       // If user doesn't exist, check for the token or any other conditions
-      if (hasToken) {
+      if (lastAuthenticated) {
         // If the user has a token, redirect to the appropriate screen
         return <Redirect href={appRoutes.tabs.home} />;
       } else {

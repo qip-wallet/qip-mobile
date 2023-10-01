@@ -71,15 +71,7 @@ class MiscManager {
             throw new Error('Error generating random ID: ' + error.message);
         }
     }
-    static async getAllAddressCreation() {
-        // const data = await getAllAddress("cneicnecie", "testnet")
-    }
-    // Example usage:
 }
-setTimeout(async () => {
-    console.log(await MiscManager.hashPassword("111111"))
-    console.log("correct", await MiscManager.authenticateWithPassword("111111", "bcb15f821479b4d5772bd0ca866c00ad5f926e3580720659cc80d39c9d09802a"))
-}, 3000);
 
 export default MiscManager;
 

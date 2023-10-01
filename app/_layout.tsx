@@ -13,7 +13,7 @@ import { AccountCreationProvider } from './context/data';
 type Props = {
     children: ReactNode;
 };
-
+console.log("Server is running on localhost:3000")
 // Define your font families
 export type FontFamily =
     "Manrope_400Regular"
@@ -63,8 +63,8 @@ export default function AppLayout({ children }: Props) {
     return (
         <RealmProvider>
             <AccountCreationProvider>
-                    <Stack screenOptions={{ headerShown: false }} >
-                    </Stack>
+                <Stack screenOptions={{ headerShown: false }} >
+                </Stack>
             </AccountCreationProvider>
         </RealmProvider>
     );

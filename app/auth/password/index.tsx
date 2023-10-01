@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, TextInput, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 import * as LocalAuthentication from 'expo-local-authentication';
-import { useRealm, createUser } from '../../realm';
+import { useRealm, createUser, updateUser } from '../../realm';
 import CoreStyles from '../../src/core/index';
 import Styles from '../style';
 import LinearGradientButton from '../../src/components/GradientButton';
@@ -30,7 +30,7 @@ export default function Auth() {
                 return;
             }
             const pwd = await MiscManager.hashPassword(data.password);
-            createUser(pwd);
+            await createUser(pwd);
             router.replace(appRoutes.auth.generatePassphrase);
         } catch (error: any) {
             console.log(error);
@@ -62,6 +62,7 @@ export default function Auth() {
     )
     return (
         <View style={CoreStyles.box({})}>
+
             <Text style={[CoreStyles.text({ fontFamily: 'Sora_700Bold' }), Styles.title]}>Create a secure password</Text>
             <View style={[CoreStyles.space(), { backgroundColor: 'transparent' }]} />
             <Text style={[CoreStyles.text({ color: "#A3A1A1", fontFamily: "Manrope_600SemiBold" }), Styles.text]}>This is your access to your wallet</Text>

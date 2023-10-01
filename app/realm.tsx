@@ -3,10 +3,10 @@ import { createRealmContext } from '@realm/react';
 import { ObjectId } from 'bson';
 Realm.flags.THROW_ON_GLOBAL_REALM = false;
 export enum Schemas {
-    User = 'usersSchema1.1.1.4',
-    Wallet = 'walletsSchema1.1.1.4',
-    Account = 'accountsSchema1.1.1.4',
-    Address = 'addressesSchema1.1.1.4',
+    User = 'usersSchema1.1.1.6',
+    Wallet = 'walletsSchema1.1.1.6',
+    Account = 'accountsSchema1.1.1.6',
+    Address = 'addressesSchema1.1.1.6',
 }
 // Define TypeScript interfaces for schema objects
 export type networkNameTypes = "mainnet" | "testnet";
@@ -40,6 +40,7 @@ export interface IUserSchema {
     createdAt: Date;
     updatedAt?: Date;
     step?: number;
+    lastAuthenticated: Date
 }
 export interface IAddressSchema {
     _id: BSON.ObjectId;
@@ -128,6 +129,7 @@ export class UserSchema extends Realm.Object implements IUserSchema {
     updatedAt?: Date | undefined;
     step?: number | undefined;
     activeWalletId?: ObjectId;
+    lastAuthenticated!: Date
     static schema: Realm.ObjectSchema = {
         name: Schemas.User,
         primaryKey: '_id',
@@ -139,13 +141,14 @@ export class UserSchema extends Realm.Object implements IUserSchema {
             updatedAt: 'date?',
             step: 'int?',
             activeWalletId: 'objectId?',
+            lastAuthenticated: 'date'
         },
     };
 }
 // Define the Realm schema array
 const realmConfig: Realm.Configuration = {
     schema: [UserSchema, AccountSchema, WalletSchema, AddressSchema],
-    schemaVersion: 29, // Update the schema version
+    schemaVersion: 30, // Update the schema version
 };
 export const { RealmProvider, useRealm, useObject, useQuery } = createRealmContext(
     realmConfig
@@ -335,6 +338,7 @@ export const createUser = async (password: string) => {
                     password: password,
                     createdAt: new Date(),
                     updatedAt: new Date(),
+                    lastAuthenticated: new Date(Date.now())
                 });
                 return newUser; // Return the created user
             }

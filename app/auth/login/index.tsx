@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, TextInput, Pressable } from 'react-native';
+import { View, Text, TextInput, Pressable, Image } from 'react-native';
 import { Link } from 'expo-router';
 import * as LocalAuthentication from 'expo-local-authentication';
-import { createUser, masterUserQuery, getAllAccount } from '../../realm';
+import { createUser, masterUserQuery, getAllAccount, updateUser } from '../../realm';
 import CoreStyles from '../../src/core/index';
 import Styles from '../style';
 import LinearGradientButton from '../../src/components/GradientButton';
@@ -20,7 +20,6 @@ export default function Login() {
                 return setError("no wallet associated with this app");
             }
             const checkPassword = await MiscManager.authenticateWithPassword(password, user.password)
-            console.log(checkPassword, "checkPassword")
             if (!checkPassword) {
                 return setError("password incorrect")
             }
@@ -31,6 +30,7 @@ export default function Login() {
             if (accounts.length <= 1) {
                 return router.replace(appRoutes.auth.generatePassphrase)
             }
+            await updateUser({ lastAuthenticated: new Date(Date.now()) })
             return router.replace(appRoutes.tabs.home);
 
         } catch (error: any) {

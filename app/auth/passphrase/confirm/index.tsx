@@ -26,7 +26,7 @@ const ConfirmPassphrase = () => {
         setPassphrase(newPassphrase);
     }
     const handleSubmit = () => {
-        if (passphrase.join(" ") == walletData?.passphrase) {
+        if (passphrase.join(" ") !== walletData?.passphrase) {
             alert("Passphrase matched")
         } else {
             updateUser({ step: 2 });

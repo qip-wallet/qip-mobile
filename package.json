@@ -9,10 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@bitcoinerlab/secp256k1": "^1.0.5",
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/manrope": "^0.2.3",
     "@expo-google-fonts/sora": "^0.2.3",
+    "@mempool/mempool.js": "^2.3.0",
     "@realm/react": "^0.6.0",
+    "ecpair": "^2.1.0",
     "expo": "~49.0.13",
     "expo-asset": "~8.10.1",
     "expo-barcode-scanner": "~12.5.3",
@@ -40,10 +43,14 @@
     "react-native-sensitive-info": "^5.5.8",
     "react-native-svg": "13.9.0",
     "react-native-web": "~0.19.6",
-    "realm": "^12.2.0"
+    "realm": "^12.2.0",
+    "expo-file-system": "~15.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/bitcore-lib": "^0.15.4",
+    "@types/express": "^4.17.18",
+    "@types/qrcode": "^1.5.2",
     "@types/react": "~18.2.14",
     "@types/react-native": "^0.72.3",
     "typescript": "^5.1.3"
