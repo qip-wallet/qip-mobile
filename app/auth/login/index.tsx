@@ -11,7 +11,6 @@ import { router } from 'expo-router';
 import MiscManager from '../../src/utils/misc';
 import { appRoutes } from '../../src/utils/routes';
 import { Ionicons } from '@expo/vector-icons';
-
 export default function Login() {
     const [password, setPassword] = useState("")
     const handleNext = async () => {

@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import { wordList } from './words';
 import { ObjectId } from 'bson';
 import { IAddressSchema } from '../../realm';
+
 class MiscManager {
     static async hashPassword(password: string): Promise<string> {
         try {
@@ -69,6 +70,9 @@ class MiscManager {
         } catch (error: any) {
             throw new Error('Error generating random ID: ' + error.message);
         }
+    }
+    static async getAllAddressCreation() {
+        // const data = await getAllAddress("cneicnecie", "testnet")
     }
     // Example usage:
 }

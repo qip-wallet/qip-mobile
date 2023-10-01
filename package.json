@@ -15,8 +15,10 @@
     "@realm/react": "^0.6.0",
     "expo": "~49.0.13",
     "expo-asset": "~8.10.1",
+    "expo-barcode-scanner": "~12.5.3",
     "expo-checkbox": "~2.4.0",
     "expo-constants": "~14.4.2",
+    "expo-crypto": "~12.4.1",
     "expo-dev-client": "~2.4.11",
     "expo-font": "~11.4.0",
     "expo-linear-gradient": "~12.3.0",
@@ -27,6 +29,7 @@
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
+    "qip-wallet": "^1.0.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.5",
@@ -37,9 +40,7 @@
     "react-native-sensitive-info": "^5.5.8",
     "react-native-svg": "13.9.0",
     "react-native-web": "~0.19.6",
-    "realm": "^12.2.0",
-    "expo-crypto": "~12.4.1",
-    "expo-barcode-scanner": "~12.5.3"
+    "realm": "^12.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
