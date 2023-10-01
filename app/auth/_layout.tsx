@@ -7,6 +7,7 @@ export default function AppLayout() {
             <Stack.Screen name='passphrase' options={{ headerShown: false }} />
             <Stack.Screen name='password' options={{ headerShown: false }} />
             <Stack.Screen name='wallet' options={{ headerShown: false }} />
+            <Stack.Screen name='login' options={{ headerShown: false }} />
         </Stack>
     );
 }

@@ -7,6 +7,7 @@ import { IUserSchema } from './realm';
 import { Redirect, useRouter } from 'expo-router';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { appRoutes } from './src/utils/routes';
+import Login from "./auth/login"
 
 export default function App() {
   const [user, setUser] = useState<IUserSchema | undefined>();
@@ -15,7 +16,6 @@ export default function App() {
   const fetchUserData = useCallback(async () => {
     try {
       const users = await masterUserQuery();
-      console.log("users", users)
       setUser(users);
     } catch (error) {
       router.replace(appRoutes.auth.password);
@@ -25,19 +25,39 @@ export default function App() {
   useEffect(() => {
     fetchUserData();
   }, []);
+  const hasToken = false; // Replace with your token check logic
 
   const renderRedirect = () => {
-    switch (user?.step) {
-      case 0:
-        return <Redirect href="/auth/password" />;
-      case 1:
-        return <Redirect href="/auth/wallet" />;
-      case 2:
-        return <Redirect href="/auth/address" />;
-      case 3:
+    console.log(hasToken)
+    if (user) {
+      if(!hasToken){
+        return <Redirect href="/auth/login" />
+      }
+      switch (user.step) {
+        case 0:
+          return <Redirect href="/auth/password" />;
+        case 1:
+          return <Redirect href="/auth/wallet" />;
+        case 2:
+          return <Redirect href="/auth/address" />;
+        case 3:
+          if (!hasToken) {
+            return <Redirect href={appRoutes.tabs.home} />
+          } else {
+            return <Login />;
+          }
+        default:
+          return <Redirect href="/auth/password" />;
+      }
+    } else {
+      // If user doesn't exist, check for the token or any other conditions
+      if (hasToken) {
+        // If the user has a token, redirect to the appropriate screen
         return <Redirect href={appRoutes.tabs.home} />;
-      default:
-        return <Redirect href="/auth/password" />;
+      } else {
+        // If there's no user or token, show the login screen
+        return <Login />;
+      }
     }
   };
 
@@ -49,7 +69,7 @@ export default function App() {
     >
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar style="auto" />
-        {user ? renderRedirect() : <Auth />}
+        {renderRedirect()}
       </SafeAreaView>
     </KeyboardAvoidingView>
   );

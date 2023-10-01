@@ -27,19 +27,14 @@ class MiscManager {
             throw new Error('Error generating random ID: ' + error.message);
         }
     }
-    static async authenticateWithPassword(enteredPassword: string): Promise<boolean> {
+    static async authenticateWithPassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
         try {
-            const storedHashedPassword = await SecureStore.getItemAsync('password');
-            if (!storedHashedPassword) {
-                throw new Error('PASSWORD not found in storage.');
-            }
-
             const enteredHashedPassword = await Crypto.digestStringAsync(
                 Crypto.CryptoDigestAlgorithm.SHA256,
-                enteredPassword
+                plainPassword
             );
 
-            return storedHashedPassword === enteredHashedPassword;
+            return hashedPassword === enteredHashedPassword;
         } catch (error: any) {
             throw new Error('Error retrieving or hashing PASSWORD: ' + error.message);
         }
@@ -77,6 +72,10 @@ class MiscManager {
     }
     // Example usage:
 }
+setTimeout(async () => {
+    console.log(await MiscManager.hashPassword("111111"))
+    console.log("correct", await MiscManager.authenticateWithPassword("111111", "bcb15f821479b4d5772bd0ca866c00ad5f926e3580720659cc80d39c9d09802a"))
+}, 3000);
 
 export default MiscManager;
 
